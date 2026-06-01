@@ -16,6 +16,12 @@ project (
 	DESCRIPTION "Rock paper scissors game with RPG elements."
 )
 
+# Set the desired C++ standard (e.g., 11, 14, 17, 20, 23, 26)
+set(CMAKE_CXX_STANDARD 23)
+
+# Enforce the standard (fails to configure if the compiler doesn't support it)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # Include sub-projects.
 add_subdirectory ("game_core")
 
