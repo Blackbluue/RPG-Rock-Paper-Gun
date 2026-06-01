@@ -1,4 +1,4 @@
-﻿# CMakeList.txt : CMake project for RPG-Rock-Paper-Gun, include source and define
+# CMakeLists.txt : CMake project for RPG-Rock-Paper-Gun, include source and define
 # project specific logic here.
 #
 cmake_minimum_required (VERSION 3.16)
