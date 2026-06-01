@@ -22,6 +22,9 @@ set(CMAKE_CXX_STANDARD 23)
 # Enforce the standard (fails to configure if the compiler doesn't support it)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
+
 # Include sub-projects.
-add_subdirectory ("game_core")
+add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/src/game_core")
+add_subdirectory ("${CMAKE_CURRENT_SOURCE_DIR}/tests")
 
