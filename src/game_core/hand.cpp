@@ -10,6 +10,14 @@ private:
     HandShape m_shape;
 
 public:
+
+    Hand(HandShape shape) {
+        m_score_base = 1;
+        m_score_mod = 0;
+        m_debuff = 0;
+        m_shape = shape;
+    }
+
     int getScoreBase(void) {
         return m_score_base;
     }

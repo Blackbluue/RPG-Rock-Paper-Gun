@@ -9,6 +9,16 @@ enum HandShape {
 class Hand {
 public:
     /**
+     * Construct a new Hand object with the specified shape.
+     *
+     * The base score is initialized to 1, the score modifier and debuff are
+     * initialized to 0.
+     *
+     * @param shape The shape of the hand (ROCK, PAPER, or SCISSORS).
+     */
+    Hand(HandShape shape);
+
+    /**
      * Get the base score of the hand.
      *
      * @return The current base score.
