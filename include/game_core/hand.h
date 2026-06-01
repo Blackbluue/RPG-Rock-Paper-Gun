@@ -1,0 +1,73 @@
+#pragma once
+
+enum HandShape {
+    ROCK,  // beat scissors, lose to paper
+    PAPER,  // beat rock, lose to scissors
+    SCISSORS  // beat paper, lose to rock
+};
+
+class Hand {
+public:
+    /**
+     * Get the base score of the hand.
+     *
+     * @return The current base score.
+     */
+    int getScoreBase(void);
+
+    /**
+     * Set the base score of the hand.
+     *
+     * @param score_base The new base score to set.
+     */
+    void setScoreBase(int score_base);
+
+    /**
+     * Get the score modifier of the hand.
+     *
+     * @return The current score modifier.
+     */
+    int getScoreMod(void);
+
+    /**
+     * Set the score modifier of the hand.
+     *
+     * @param score_mod The new score modifier to set.
+     */
+    void setScoreMod(int score_mod);
+
+    /**
+     * Get the debuff applied to the opponent when calculating score.
+     *
+     * @return The current debuff value.
+     */
+    int getDebuff(void);
+
+    /**
+     * Get the shape of the hand.
+     *
+     * @return The current hand shape.
+     */
+    HandShape getShape(void);
+
+    /**
+     * Set the shape of the hand.
+     *
+     * @param shape The new hand shape to set.
+     */
+    void setShape(HandShape shape);
+
+    /**
+     * Calculate the score of this hand against an opponent's hand.
+     *
+     * Any extra modifiers and debuffs are applied to the score calculation,
+     * and the advantage score is added accordingly. The return value is the
+     * difference between the player's score and the opponent's score, where a
+     * positive value indicates a win, a negative value indicates a loss, and
+     * zero indicates a tie.
+     *
+     * @param opponent The opponent's hand to compare against.
+     * @return The calculated score based on the hand shapes and modifiers.
+     */
+    int calc_score(Hand opponent);
+};
