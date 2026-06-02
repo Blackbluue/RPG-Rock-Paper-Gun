@@ -66,18 +66,18 @@ public:
      * @param shape The new hand shape to set.
      */
     void setShape(HandShape shape);
-
-    /**
-     * Calculate the score of this hand against an opponent's hand.
-     *
-     * Any extra modifiers and debuffs are applied to the score calculation,
-     * and the advantage score is added accordingly. The return value is the
-     * difference between the player's score and the opponent's score, where a
-     * positive value indicates a win, a negative value indicates a loss, and
-     * zero indicates a tie.
-     *
-     * @param opponent The opponent's hand to compare against.
-     * @return The calculated score based on the hand shapes and modifiers.
-     */
-    int calc_score(Hand opponent);
 };
+
+/**
+ * Calculate the score between 2 hands.
+ *
+ * Any extra modifiers and debuffs are applied to the score calculation,
+ * and the advantage score is added accordingly. The return value is the
+ * difference between the 2 players' scores, where a positive value indicates a
+ * p1 win, a negative value indicates a p1 loss, and zero indicates a tie.
+ *
+ * @param p1 Player 1's hand to calculate the score for.
+ * @param p2 Player 2's hand to calculate the score for.
+ * @return The calculated score based on the hand shapes and modifiers.
+ */
+int calc_score(Hand p1, Hand p2);

@@ -1,6 +1,6 @@
 #include "game_core/hand.h"
 // Advantage score is added to hand score when the hand wins against the opponent's hand.
-constexpr auto ADVANTAGE_SCORE = 10;
+constexpr auto ADVANTAGE = 10;
 
 class Hand {
 private:
@@ -49,19 +49,19 @@ public:
     void setShape(HandShape shape) {
         m_shape = shape;
     }
-
-    int calc_score(Hand opponent) {
-        int score = m_score_base + m_score_mod - opponent.m_debuff;
-        int opp_score = opponent.m_score_base + opponent.m_score_mod - m_debuff;
-
-        if (m_shape == opponent.m_shape) {
-            return score - opp_score;
-        } else if ((m_shape == ROCK && opponent.m_shape == SCISSORS) ||
-            (m_shape == PAPER && opponent.m_shape == ROCK) ||
-            (m_shape == SCISSORS && opponent.m_shape == PAPER)) {
-            return (score + ADVANTAGE_SCORE) - opp_score;
-        } else {
-            return score - (opp_score + ADVANTAGE_SCORE);
-        }
-    }
 };
+
+int calc_score(Hand p1, Hand p2) {
+    int p1_score = p1.getScoreBase() + p1.getScoreMod() - p2.getDebuff();
+    int p2_score = p2.getScoreBase() + p2.getScoreMod() - p1.getDebuff();
+
+    if (p1.getShape() == p2.getShape()) {
+        return p1_score - p2_score;
+    } else if ((p1.getShape() == ROCK && p2.getShape() == SCISSORS) ||
+        (p1.getShape() == PAPER && p2.getShape() == ROCK) ||
+        (p1.getShape() == SCISSORS && p2.getShape() == PAPER)) {
+        return (p1_score + ADVANTAGE) - p2_score;
+    } else {
+        return p1_score - (p2_score + ADVANTAGE);
+    }
+}
