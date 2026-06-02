@@ -37,4 +37,29 @@ public:
      * @param change The amount to adjust the HP by (positive or negative).
      */
     void adjustHp(int change);
+
+    /**
+     * Get the currently active hand of the player.
+     *
+     * @return The active hand.
+     */
+    Hand getActiveHand(void);
+
+    /**
+     * Set the active hand of the player.
+     *
+     * @param hand The hand to set as active.
+     */
+    void setActiveHand(Hand hand);
 };
+
+/**
+ * Simulate a fight between two players based on their active hands.
+ *
+ * The function calculates the score of the fight using the active hands of
+ * both players and applies damage accordingly.
+ *
+ * @param p1 The first player.
+ * @param p2 The second player.
+ */
+void fight(Player p1, Player p2);
