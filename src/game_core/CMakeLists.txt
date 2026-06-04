@@ -1,2 +1,5 @@
 # LIBRARIES
-add_library (${PROJECT_NAME} "${CMAKE_CURRENT_SOURCE_DIR}/RPG-Rock-Paper-Gun.cpp")
+add_library (game_core
+    ${CMAKE_CURRENT_SOURCE_DIR}/player.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/hand.cpp
+)
