@@ -1,35 +1,42 @@
 #pragma once
+
 #include "game_core/hand.h"
 
-
 class Player {
-public:
+  private:
+    int m_lvl;          // The player's current level
+    int m_hp;           // The player's current HP
+    Hand m_rock;        // The player's rock hand
+    Hand m_paper;       // The player's paper hand
+    Hand m_scissors;    // The player's scissors hand
+    Hand m_active_hand; // The currently active hand for the player
+  public:
     /**
      * Construct a new Player object with default HP and hand configurations.
      *
      * The player's HP is initialized to 10, and the player has one of each hand
      * shape (rock, paper, scissors) with default scores and debuffs.
      */
-    Player(void);
+    Player();
 
     /**
      * Get the current level of the player.
      *
      * @return The current level.
      */
-    int get_Lvl(void);
+    int get_Lvl();
 
     /**
      * Increase the player's level by 1.
      */
-    void level_up(void);
+    void level_up();
 
     /**
      * Get the current HP of the player.
      *
      * @return The current HP.
      */
-    int getHp(void);
+    int getHp();
 
     /**
      * Adjust the HP of the player.
@@ -43,7 +50,7 @@ public:
      *
      * @return The active hand.
      */
-    Hand getActiveHand(void);
+    Hand getActiveHand();
 
     /**
      * Set the active hand of the player.

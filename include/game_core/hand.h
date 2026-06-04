@@ -1,13 +1,19 @@
 #pragma once
 
 enum HandShape {
-    ROCK,  // beat scissors, lose to paper
-    PAPER,  // beat rock, lose to scissors
-    SCISSORS  // beat paper, lose to rock
+    ROCK,    // beat scissors, lose to paper
+    PAPER,   // beat rock, lose to scissors
+    SCISSORS // beat paper, lose to rock
 };
 
 class Hand {
-public:
+  private:
+    int m_score_base;  // Base score of the hand
+    int m_score_mod;   // Score modifier to add to the base score
+    int m_debuff;      // Debuff applied to the opponent score when calculating
+                       // final score
+    HandShape m_shape; // The shape of the hand (rock, paper, scissors)
+  public:
     /**
      * Construct a new Hand object with the specified shape.
      *
@@ -23,7 +29,7 @@ public:
      *
      * @return The current base score.
      */
-    int getScoreBase(void);
+    int getScoreBase();
 
     /**
      * Set the base score of the hand.
@@ -37,7 +43,7 @@ public:
      *
      * @return The current score modifier.
      */
-    int getScoreMod(void);
+    int getScoreMod();
 
     /**
      * Set the score modifier of the hand.
@@ -51,14 +57,21 @@ public:
      *
      * @return The current debuff value.
      */
-    int getDebuff(void);
+    int getDebuff();
+
+    /**
+     * Set the debuff applied to the opponent when calculating score.
+     *
+     * @param debuff The new debuff value to set.
+     */
+    void setDebuff(int debuff);
 
     /**
      * Get the shape of the hand.
      *
      * @return The current hand shape.
      */
-    HandShape getShape(void);
+    HandShape getShape();
 
     /**
      * Set the shape of the hand.
