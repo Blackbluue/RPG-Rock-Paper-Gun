@@ -15,6 +15,8 @@ class Session {
      */
     Session(GameState gameState);
 
+    int getMatchCount();
+
     /**
      * Play a new match in the game.
      *

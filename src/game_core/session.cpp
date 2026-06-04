@@ -2,6 +2,7 @@
 
 Session::Session(GameState gameState)
     : m_gameState(gameState), match_count(0) {}
+int Session::getMatchCount() { return match_count; }
 
 bool Session::playMatch(Player opponent) {
     // TODO: implement main game loop for playing a match
