@@ -9,7 +9,7 @@ bool Session::playMatch(Player opponent) {
     while (m_gameState.getPlayer().getHp() > 0 && opponent.getHp() > 0) {
         getPlayerInput(m_gameState);
         getEnemyInput(m_gameState.getPlayer(), opponent);
-        fightRound(m_gameState.getPlayer(), opponent);
+        m_gameState.getPlayer().fightRound(opponent);
     }
     if (m_gameState.getPlayer().getHp() > 0) {
         ++match_count;

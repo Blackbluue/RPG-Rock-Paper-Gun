@@ -1,19 +1,7 @@
 #pragma once
 
 #include "game_core/game_state.h"
-#include "game_core/hand.h"
 #include "game_core/player.h"
-
-/**
- * Simulate a fight between two players based on their active hands.
- *
- * The function calculates the score of the fight using the active hands of
- * both players and applies damage accordingly.
- *
- * @param p1 The first player.
- * @param p2 The second player.
- */
-void fightRound(Player p1, Player p2);
 
 /**
  * Get player input to change the active hand.

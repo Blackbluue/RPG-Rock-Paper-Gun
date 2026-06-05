@@ -58,4 +58,14 @@ class Player {
      * @param hand The hand to set as active.
      */
     void setActiveHand(Hand hand);
+
+    /**
+     * Simulate a fight between two players based on their active hands.
+     *
+     * The function calculates the score of the fight using the active hands of
+     * both players and applies damage accordingly.
+     *
+     * @param opponent The second player.
+     */
+    void fightRound(Player opponent);
 };
