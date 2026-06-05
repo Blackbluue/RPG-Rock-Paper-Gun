@@ -11,7 +11,12 @@ bool Session::playMatch(Player opponent) {
         getEnemyInput(m_gameState.getPlayer(), opponent);
         fightRound(m_gameState.getPlayer(), opponent);
     }
-    return true; // Placeholder return value
+    if (m_gameState.getPlayer().getHp() > 0) {
+        ++match_count;
+        return true; // Player wins
+    } else if (opponent.getHp() > 0) {
+        return false; // Opponent wins
+    }
 }
 
 void Session::grantReward(Player opponent) {
