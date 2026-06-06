@@ -1,6 +1,6 @@
 #include "game_core/player.h"
 
-Player::Player() : m_lvl(1), m_hp(10), m_active_hand(ROCK) {
+Player::Player() {
     m_hands[ROCK] = Hand(ROCK);
     m_hands[PAPER] = Hand(PAPER);
     m_hands[SCISSORS] = Hand(SCISSORS);

@@ -5,10 +5,10 @@
 
 class Player {
   private:
-    int m_lvl;                         // The player's current level
-    int m_hp;                          // The player's current HP
-    std::map<HandShape, Hand> m_hands; // The player's hands mapped by shape
-    HandShape m_active_hand; // The currently active hand for the player
+    int m_lvl{1};                        // The player's current level
+    int m_hp{10};                        // The player's current HP
+    std::map<HandShape, Hand> m_hands{}; // The player's hands mapped by shape
+    HandShape m_active_hand{ROCK}; // The currently active hand for the player
   public:
     /**
      * Construct a new Player object with default HP and hand configurations.
@@ -57,6 +57,8 @@ class Player {
      * @param hand The hand to set as active.
      */
     void setActiveHand(HandShape hand);
+
+    Hand randomHand(bool set_active = false);
 
     /**
      * Simulate a fight between two players based on their active hands.

@@ -1,5 +1,4 @@
 ﻿#include "game_core/game_state.h"
 
-GameState::GameState(LaunchType launchType = LaunchType::GUI)
-    : m_launchType(launchType), m_player() {}
+GameState::GameState(LaunchType launchType) : m_launchType(launchType) {}
 Player GameState::getPlayer() { return m_player; }

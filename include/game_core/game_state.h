@@ -10,8 +10,8 @@ enum LaunchType {
 
 class GameState {
   private:
-    LaunchType m_launchType; // The type of launch for the game
-    Player m_player;         // The player with their saved attributes
+    LaunchType m_launchType{GUI}; // The type of launch for the game
+    Player m_player{};            // The player with their saved attributes
   public:
     /**
      * Construct a new GameState object.
@@ -20,7 +20,7 @@ class GameState {
      *
      * @param launchType The type of launch for the game.
      */
-    GameState(LaunchType launchType);
+    GameState(LaunchType launchType = LaunchType::GUI);
 
     /**
      * Get the player in the game state.

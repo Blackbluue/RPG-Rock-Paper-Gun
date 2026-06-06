@@ -1,8 +1,7 @@
 #include "game_core/session.h"
 #include "game_core/utilities.h"
 
-Session::Session(GameState gameState)
-    : m_gameState(gameState), match_count(0) {}
+Session::Session(GameState gameState) : m_gameState(gameState) {}
 int Session::getMatchCount() { return match_count; }
 
 bool Session::playMatch(Player opponent) {

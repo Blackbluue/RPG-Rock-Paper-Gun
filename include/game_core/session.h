@@ -5,8 +5,8 @@
 
 class Session {
   private:
-    GameState m_gameState; // The game state for the session
-    int match_count;       // The number of matches played in the session
+    GameState m_gameState{}; // The game state for the session
+    int match_count{0};      // The number of matches played in the session
   public:
     /**
      * Construct a new Session object.
