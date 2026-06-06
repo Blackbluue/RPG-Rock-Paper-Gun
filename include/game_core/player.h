@@ -1,15 +1,14 @@
 #pragma once
 
 #include "game_core/hand.h"
+#include <map>
 
 class Player {
   private:
-    int m_lvl;          // The player's current level
-    int m_hp;           // The player's current HP
-    Hand m_rock;        // The player's rock hand
-    Hand m_paper;       // The player's paper hand
-    Hand m_scissors;    // The player's scissors hand
-    Hand m_active_hand; // The currently active hand for the player
+    int m_lvl;                         // The player's current level
+    int m_hp;                          // The player's current HP
+    std::map<HandShape, Hand> m_hands; // The player's hands mapped by shape
+    HandShape m_active_hand; // The currently active hand for the player
   public:
     /**
      * Construct a new Player object with default HP and hand configurations.
@@ -57,7 +56,7 @@ class Player {
      *
      * @param hand The hand to set as active.
      */
-    void setActiveHand(Hand hand);
+    void setActiveHand(HandShape hand);
 
     /**
      * Simulate a fight between two players based on their active hands.
