@@ -10,10 +10,10 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 enable_testing()
 
-add_executable (core_test "${CMAKE_CURRENT_SOURCE_DIR}/core_test.cpp")
-target_link_libraries (core_test GTest::gtest_main game_core)
+add_executable (test_core "${CMAKE_CURRENT_SOURCE_DIR}/test_core.cpp")
+target_link_libraries (test_core GTest::gtest_main game_core)
 
 include(GoogleTest)
-gtest_discover_tests(core_test)
+gtest_discover_tests(test_core)
 
-add_test(NAME core_test COMMAND core_test)
+add_test(NAME test_core COMMAND test_core)
