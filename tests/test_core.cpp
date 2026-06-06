@@ -3,6 +3,27 @@
 #include <gtest/gtest.h> // for Google Test framework
 #include <map>
 
+void test_hand(Hand to_test, Hand winner, Hand loser) {
+    EXPECT_GT(winner.calc_score(to_test),
+              0); // winner should win against to_test
+    EXPECT_LT(loser.calc_score(to_test),
+              0); // loser should lose against to_test
+    EXPECT_EQ(to_test.calc_score(to_test),
+              0); // to_test should tie against itself
+}
+
+TEST(HandTest, test_scores) {
+    Hand rock(HandShape::ROCK);
+    Hand paper(HandShape::PAPER);
+    Hand scissors(HandShape::SCISSORS);
+
+    test_hand(rock, paper, scissors);
+
+    test_hand(paper, scissors, rock);
+
+    test_hand(scissors, rock, paper);
+}
+
 TEST(PlayerTest, test_level) {
     Player player;
 

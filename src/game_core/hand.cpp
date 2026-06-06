@@ -12,12 +12,12 @@ Hand::Hand()
 Hand::Hand(HandShape shape)
     : m_score_base(SCORE_BASE), m_score_mod(SCORE_MOD), m_debuff(DEBUFF),
       m_shape(shape) {}
-int Hand::getScoreBase() { return m_score_base; }
-void Hand::setScoreBase(int score_base) { m_score_base = score_base; }
-int Hand::getScoreMod() { return m_score_mod; }
-void Hand::setScoreMod(int score_mod) { m_score_mod = score_mod; }
-int Hand::getDebuff() { return m_debuff; }
-void Hand::setDebuff(int debuff) { m_debuff = debuff; }
+int Hand::get_score_base() { return m_score_base; }
+void Hand::set_score_base(int score_base) { m_score_base = score_base; }
+int Hand::get_score_mod() { return m_score_mod; }
+void Hand::set_score_mod(int score_mod) { m_score_mod = score_mod; }
+int Hand::get_debuff() { return m_debuff; }
+void Hand::set_debuff(int debuff) { m_debuff = debuff; }
 void Hand::setShape(HandShape shape) { m_shape = shape; }
 HandShape Hand::getShape() { return m_shape; }
 

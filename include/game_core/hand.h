@@ -8,9 +8,9 @@ enum class HandShape {
 
 class Hand {
   private:
-    int m_score_base{}; // Base score of the hand
-    int m_score_mod{};  // Score modifier to add to the base score
-    int m_debuff{};     // Debuff applied to the opponent score
+    int m_score_base{};  // Base score of the hand
+    int m_score_mod{};   // Score modifier to add to the base score
+    int m_debuff{};      // Debuff applied to the opponent score
     HandShape m_shape{}; // The shape of the hand (rock, paper, scissors)
   public:
     /**
@@ -36,42 +36,42 @@ class Hand {
      *
      * @return The current base score.
      */
-    int getScoreBase();
+    int get_score_base();
 
     /**
      * Set the base score of the hand.
      *
      * @param score_base The new base score to set.
      */
-    void setScoreBase(int score_base);
+    void set_score_base(int score_base);
 
     /**
      * Get the score modifier of the hand.
      *
      * @return The current score modifier.
      */
-    int getScoreMod();
+    int get_score_mod();
 
     /**
      * Set the score modifier of the hand.
      *
      * @param score_mod The new score modifier to set.
      */
-    void setScoreMod(int score_mod);
+    void set_score_mod(int score_mod);
 
     /**
      * Get the debuff applied to the opponent when calculating score.
      *
      * @return The current debuff value.
      */
-    int getDebuff();
+    int get_debuff();
 
     /**
      * Set the debuff applied to the opponent when calculating score.
      *
      * @param debuff The new debuff value to set.
      */
-    void setDebuff(int debuff);
+    void set_debuff(int debuff);
 
     /**
      * Get the shape of the hand.
