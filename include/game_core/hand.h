@@ -8,11 +8,10 @@ enum class HandShape {
 
 class Hand {
   private:
-    int m_score_base{1}; // Base score of the hand
-    int m_score_mod{0};  // Score modifier to add to the base score
-    int m_debuff{0};     // Debuff applied to the opponent score
-    HandShape m_shape{
-        HandShape::ROCK}; // The shape of the hand (rock, paper, scissors)
+    int m_score_base{}; // Base score of the hand
+    int m_score_mod{};  // Score modifier to add to the base score
+    int m_debuff{};     // Debuff applied to the opponent score
+    HandShape m_shape{}; // The shape of the hand (rock, paper, scissors)
   public:
     /**
      * Construct a new Hand object with default values.

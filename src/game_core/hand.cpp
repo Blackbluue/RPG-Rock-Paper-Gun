@@ -1,10 +1,17 @@
 #include "game_core/hand.h"
 
+constexpr auto SCORE_BASE = 1; // Base score for each hand
+constexpr auto SCORE_MOD = 0;  // Default score modifier for each hand
+constexpr auto DEBUFF = 0;     // Default debuff for each hand
 // added to hand score when the hand wins against the opponent's hand.
 constexpr auto ADVANTAGE = 10;
 
-Hand::Hand() {}
-Hand::Hand(HandShape shape) : m_shape(shape) {}
+Hand::Hand()
+    : m_score_base(SCORE_BASE), m_score_mod(SCORE_MOD), m_debuff(DEBUFF),
+      m_shape(HandShape::ROCK) {}
+Hand::Hand(HandShape shape)
+    : m_score_base(SCORE_BASE), m_score_mod(SCORE_MOD), m_debuff(DEBUFF),
+      m_shape(shape) {}
 int Hand::getScoreBase() { return m_score_base; }
 void Hand::setScoreBase(int score_base) { m_score_base = score_base; }
 int Hand::getScoreMod() { return m_score_mod; }
