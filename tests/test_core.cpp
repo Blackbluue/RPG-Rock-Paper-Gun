@@ -51,19 +51,19 @@ TEST(PlayerTest, test_hp) {
 TEST(PlayerTest, test_hands) {
     Player player;
 
-    player.set_active_hand(ROCK);
-    EXPECT_EQ(player.get_active_hand().getShape(), ROCK);
+    player.set_active_hand(HandShape::ROCK);
+    EXPECT_EQ(player.get_active_hand().getShape(), HandShape::ROCK);
 
-    player.set_active_hand(PAPER);
-    EXPECT_EQ(player.get_active_hand().getShape(), PAPER);
+    player.set_active_hand(HandShape::PAPER);
+    EXPECT_EQ(player.get_active_hand().getShape(), HandShape::PAPER);
 
-    player.set_active_hand(SCISSORS);
-    EXPECT_EQ(player.get_active_hand().getShape(), SCISSORS);
+    player.set_active_hand(HandShape::SCISSORS);
+    EXPECT_EQ(player.get_active_hand().getShape(), HandShape::SCISSORS);
 
     for (int i{10}; i > 0; --i) {
         player.random_hand();
         // ensure random_hand function does not change active hand
-        EXPECT_EQ(player.get_active_hand().getShape(), SCISSORS);
+        EXPECT_EQ(player.get_active_hand().getShape(), HandShape::SCISSORS);
     }
     for (int i{10}; i > 0; --i) {
         Hand rand_hand = player.random_hand(true);
@@ -73,9 +73,9 @@ TEST(PlayerTest, test_hands) {
 
     std::map<HandShape, Hand> hands = player.get_hands();
     EXPECT_EQ(hands.size(), 3);
-    EXPECT_EQ(hands[ROCK].getShape(), ROCK);
-    EXPECT_EQ(hands[PAPER].getShape(), PAPER);
-    EXPECT_EQ(hands[SCISSORS].getShape(), SCISSORS);
+    EXPECT_EQ(hands[HandShape::ROCK].getShape(), HandShape::ROCK);
+    EXPECT_EQ(hands[HandShape::PAPER].getShape(), HandShape::PAPER);
+    EXPECT_EQ(hands[HandShape::SCISSORS].getShape(), HandShape::SCISSORS);
 }
 
 int main(int argc, char **argv) {

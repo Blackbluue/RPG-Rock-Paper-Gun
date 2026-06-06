@@ -9,10 +9,10 @@ constexpr int INITIAL_HP = 10;
 
 Player::Player()
     : m_lvl(INITIAL_LEVEL), m_cur_exp(INITIAL_EXP), m_req_exp(INITIAL_REQ_EXP),
-      m_hp(INITIAL_HP), m_active_hand(ROCK) {
-    m_hands[ROCK] = Hand(ROCK);
-    m_hands[PAPER] = Hand(PAPER);
-    m_hands[SCISSORS] = Hand(SCISSORS);
+      m_hp(INITIAL_HP), m_active_hand(HandShape::ROCK) {
+    m_hands[HandShape::ROCK] = Hand(HandShape::ROCK);
+    m_hands[HandShape::PAPER] = Hand(HandShape::PAPER);
+    m_hands[HandShape::SCISSORS] = Hand(HandShape::SCISSORS);
 }
 unsigned short Player::get_Lvl() { return m_lvl; }
 

@@ -20,9 +20,12 @@ int Hand::calc_score(Hand opponent) {
 
     if (m_shape == opponent.m_shape) {
         return p1_score - p2_score;
-    } else if ((m_shape == ROCK && opponent.m_shape == SCISSORS) ||
-               (m_shape == PAPER && opponent.m_shape == ROCK) ||
-               (m_shape == SCISSORS && opponent.m_shape == PAPER)) {
+    } else if ((m_shape == HandShape::ROCK &&
+                opponent.m_shape == HandShape::SCISSORS) ||
+               (m_shape == HandShape::PAPER &&
+                opponent.m_shape == HandShape::ROCK) ||
+               (m_shape == HandShape::SCISSORS &&
+                opponent.m_shape == HandShape::PAPER)) {
         return (p1_score + ADVANTAGE) - p2_score;
     } else {
         return p1_score - (p2_score + ADVANTAGE);
