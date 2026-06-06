@@ -1,7 +1,7 @@
 #include "game_core/player.h"
 #include <gtest/gtest.h> // for Google Test framework
 
-TEST(PlayerTest, level) {
+TEST(PlayerTest, test_level) {
     Player player;
 
     // Test direct level manipulation
@@ -34,6 +34,16 @@ TEST(PlayerTest, level) {
     player.reset_level();
     EXPECT_EQ(player.get_Lvl(), 1);
     EXPECT_EQ(player.get_cur_exp(), 0);
+}
+
+TEST(PlayerTest, test_hp) {
+    Player player;
+
+    int initial_hp = player.get_hp();
+    player.adjust_hp(5);
+    EXPECT_EQ(player.get_hp(), initial_hp + 5);
+    player.adjust_hp(-3);
+    EXPECT_EQ(player.get_hp(), initial_hp + 2);
 }
 
 int main(int argc, char **argv) {

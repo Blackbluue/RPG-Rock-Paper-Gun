@@ -5,9 +5,11 @@ constexpr unsigned short INITIAL_LEVEL = 1;
 constexpr unsigned int INITIAL_EXP = 0;
 constexpr unsigned int INITIAL_REQ_EXP = 10;
 constexpr double EXP_GROWTH_RATE = 1.3;
+constexpr int INITIAL_HP = 10;
 
 Player::Player()
-    : m_lvl(INITIAL_LEVEL), m_cur_exp(INITIAL_EXP), m_req_exp(INITIAL_REQ_EXP) {
+    : m_lvl(INITIAL_LEVEL), m_cur_exp(INITIAL_EXP), m_req_exp(INITIAL_REQ_EXP),
+      m_hp(INITIAL_HP) {
     m_hands[ROCK] = Hand(ROCK);
     m_hands[PAPER] = Hand(PAPER);
     m_hands[SCISSORS] = Hand(SCISSORS);
@@ -42,8 +44,8 @@ void Player::gain_exp(unsigned int exp) {
 
 void Player::reset_exp() { m_cur_exp = INITIAL_EXP; }
 
-int Player::getHp() { return m_hp; }
-void Player::adjustHp(int change) { m_hp += change; }
+int Player::get_hp() { return m_hp; }
+void Player::adjust_hp(int change) { m_hp += change; }
 Hand Player::getActiveHand() { return m_hands[m_active_hand]; }
 
 Hand Player::randomHand(bool set_active) {
@@ -63,9 +65,9 @@ void Player::fightRound(Player opponent) {
     int damage = -1;
 
     if (score > 0) {
-        opponent.adjustHp(damage);
+        opponent.adjust_hp(damage);
     } else if (score < 0) {
-        adjustHp(damage);
+        adjust_hp(damage);
     }
     // TODO: apply after-round-calculation effects
 }

@@ -8,7 +8,7 @@ class Player {
     unsigned short m_lvl{};   // The player's current level
     unsigned int m_cur_exp{}; // The player's current experience points
     unsigned int m_req_exp{}; // The experience points required to level up
-    int m_hp{10};             // The player's current HP
+    int m_hp{};               // The player's current HP
     std::map<HandShape, Hand> m_hands{}; // The player's hands mapped by shape
     HandShape m_active_hand{ROCK}; // The currently active hand for the player
   public:
@@ -83,14 +83,14 @@ class Player {
      *
      * @return The current HP.
      */
-    int getHp();
+    int get_hp();
 
     /**
      * Adjust the HP of the player.
      *
      * @param change The amount to adjust the HP by (positive or negative).
      */
-    void adjustHp(int change);
+    void adjust_hp(int change);
 
     /**
      * Get the currently active hand of the player.
