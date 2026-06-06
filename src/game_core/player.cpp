@@ -1,11 +1,11 @@
 #include "game_core/player.h"
 #include "game_core/utilities.h"
 
-constexpr unsigned short INITIAL_LEVEL = 1;
-constexpr unsigned int INITIAL_EXP = 0;
-constexpr unsigned int INITIAL_REQ_EXP = 10;
-constexpr double EXP_GROWTH_RATE = 1.3;
-constexpr int INITIAL_HP = 10;
+constexpr auto INITIAL_HP = 10;
+constexpr auto INITIAL_LEVEL = 1;
+constexpr auto INITIAL_EXP = 0;
+constexpr auto INITIAL_REQ_EXP = 10;
+constexpr auto EXP_GROWTH_RATE = 1.3;
 
 Player::Player()
     : m_lvl(INITIAL_LEVEL), m_cur_exp(INITIAL_EXP), m_req_exp(INITIAL_REQ_EXP),
