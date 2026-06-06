@@ -13,7 +13,7 @@ bool Session::playMatch(Player opponent) {
     if (m_gameState.getPlayer().getHp() > 0) {
         ++match_count;
         return true; // Player wins
-    } else if (opponent.getHp() > 0) {
+    } else {
         return false; // Opponent wins
     }
 }
