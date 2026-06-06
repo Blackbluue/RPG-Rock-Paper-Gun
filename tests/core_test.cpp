@@ -1,6 +1,3 @@
-#include <iostream> // for std::cout
+#include <gtest/gtest.h> // for Google Test framework
 
-int main() {
-    std::cout << "Core test." << std::endl;
-    return 0;
-}
+int main() { return 0; }
