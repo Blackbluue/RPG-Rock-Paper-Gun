@@ -1,4 +1,5 @@
 #include "game_core/player.h"
+#include "game_core/utilities.h"
 
 Player::Player() {
     m_hands[ROCK] = Hand(ROCK);
@@ -10,6 +11,15 @@ void Player::level_up() { ++m_lvl; }
 int Player::getHp() { return m_hp; }
 void Player::adjustHp(int change) { m_hp += change; }
 Hand Player::getActiveHand() { return m_hands[m_active_hand]; }
+
+Hand Player::randomHand(bool set_active) {
+    HandShape shape =
+        static_cast<HandShape>(random_number(0, m_hands.size() - 1));
+    if (set_active) {
+        m_active_hand = shape;
+    }
+    return m_hands[shape];
+}
 
 void Player::fightRound(Player opponent) {
     // TODO: apply adjustments before calculating score

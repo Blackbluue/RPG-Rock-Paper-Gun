@@ -13,5 +13,6 @@ void getPlayerInput(GameState gameState) {
 }
 
 void getEnemyInput(Player player, Player opponent) {
-    // TODO: implement enemy AI to choose active hand
+    // TODO: let opponent perform other actions before choosing hand
+    opponent.randomHand(true);
 }
