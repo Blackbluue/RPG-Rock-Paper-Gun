@@ -1,13 +1,47 @@
 #include "game_core/player.h"
 #include "game_core/utilities.h"
 
-Player::Player() {
+constexpr unsigned short INITIAL_LEVEL = 1;
+constexpr unsigned int INITIAL_EXP = 0;
+constexpr unsigned int INITIAL_REQ_EXP = 10;
+constexpr double EXP_GROWTH_RATE = 1.3;
+
+Player::Player()
+    : m_lvl(INITIAL_LEVEL), m_cur_exp(INITIAL_EXP), m_req_exp(INITIAL_REQ_EXP) {
     m_hands[ROCK] = Hand(ROCK);
     m_hands[PAPER] = Hand(PAPER);
     m_hands[SCISSORS] = Hand(SCISSORS);
 }
-int Player::get_Lvl() { return m_lvl; }
-void Player::level_up() { ++m_lvl; }
+unsigned short Player::get_Lvl() { return m_lvl; }
+
+void Player::level_up(bool reset_exp) {
+    ++m_lvl;
+    if (reset_exp) {
+        m_cur_exp = INITIAL_EXP;
+    }
+    m_req_exp = static_cast<unsigned int>(m_req_exp * EXP_GROWTH_RATE);
+}
+
+void Player::reset_level() {
+    m_lvl = INITIAL_LEVEL;
+    m_cur_exp = INITIAL_EXP;
+    m_req_exp = INITIAL_REQ_EXP;
+}
+
+unsigned int Player::get_cur_exp() { return m_cur_exp; }
+unsigned int Player::get_req_exp() { return m_req_exp; }
+
+void Player::gain_exp(unsigned int exp) {
+    m_cur_exp += exp;
+    while (m_cur_exp >= m_req_exp) {
+        m_cur_exp -= m_req_exp;
+        // still calculating exp gain, so cannot reset exp yet
+        level_up(false);
+    }
+}
+
+void Player::reset_exp() { m_cur_exp = INITIAL_EXP; }
+
 int Player::getHp() { return m_hp; }
 void Player::adjustHp(int change) { m_hp += change; }
 Hand Player::getActiveHand() { return m_hands[m_active_hand]; }

@@ -5,8 +5,10 @@
 
 class Player {
   private:
-    int m_lvl{1};                        // The player's current level
-    int m_hp{10};                        // The player's current HP
+    unsigned short m_lvl{};   // The player's current level
+    unsigned int m_cur_exp{}; // The player's current experience points
+    unsigned int m_req_exp{}; // The experience points required to level up
+    int m_hp{10};             // The player's current HP
     std::map<HandShape, Hand> m_hands{}; // The player's hands mapped by shape
     HandShape m_active_hand{ROCK}; // The currently active hand for the player
   public:
@@ -23,12 +25,58 @@ class Player {
      *
      * @return The current level.
      */
-    int get_Lvl();
+    unsigned short get_Lvl();
 
     /**
      * Increase the player's level by 1.
+     *
+     * If reset_exp is true, the player's current experience points are reset to
+     * 0. Because leveling up without resetting the experience points can lead
+     * to errors in progression, this should generally never be done without a
+     * good reason.
+     *
+     * @param reset_exp Whether to reset the player's current experience points
+     * to 0 after leveling up.
      */
-    void level_up();
+    void level_up(bool reset_exp = true);
+
+    /**
+     * Reset the player's level to the initial value.
+     */
+    void reset_level();
+
+    /**
+     * Get the current experience points of the player.
+     *
+     * @return The current experience points.
+     */
+    unsigned int get_cur_exp();
+
+    /**
+     * Get the experience points required to level up.
+     *
+     * @return The required experience points.
+     */
+    unsigned int get_req_exp();
+
+    /**
+     * Increase the player's experience points.
+     *
+     * If the player's experience points exceed the required amount to level up,
+     * the player levels up and the excess experience points are carried over.
+     * The required experience points for the next level up increase by a growth
+     * rate after each level up.
+     *
+     * @param exp The amount of experience points to gain.
+     */
+    void gain_exp(unsigned int exp);
+
+    /**
+     * Reset the player's experience points to the initial values.
+     *
+     * Resetting experience points does not alter the player's level.
+     */
+    void reset_exp();
 
     /**
      * Get the current HP of the player.

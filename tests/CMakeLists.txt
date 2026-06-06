@@ -15,5 +15,3 @@ target_link_libraries (test_core GTest::gtest_main game_core)
 
 include(GoogleTest)
 gtest_discover_tests(test_core)
-
-add_test(NAME test_core COMMAND test_core)
