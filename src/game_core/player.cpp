@@ -9,7 +9,7 @@ constexpr int INITIAL_HP = 10;
 
 Player::Player()
     : m_lvl(INITIAL_LEVEL), m_cur_exp(INITIAL_EXP), m_req_exp(INITIAL_REQ_EXP),
-      m_hp(INITIAL_HP) {
+      m_hp(INITIAL_HP), m_active_hand(ROCK) {
     m_hands[ROCK] = Hand(ROCK);
     m_hands[PAPER] = Hand(PAPER);
     m_hands[SCISSORS] = Hand(SCISSORS);
@@ -46,9 +46,12 @@ void Player::reset_exp() { m_cur_exp = INITIAL_EXP; }
 
 int Player::get_hp() { return m_hp; }
 void Player::adjust_hp(int change) { m_hp += change; }
-Hand Player::getActiveHand() { return m_hands[m_active_hand]; }
+Hand Player::get_active_hand() { return m_hands[m_active_hand]; }
+void Player::set_active_hand(HandShape hand) { m_active_hand = hand; }
 
-Hand Player::randomHand(bool set_active) {
+std::map<HandShape, Hand> Player::get_hands() { return m_hands; }
+
+Hand Player::random_hand(bool set_active) {
     HandShape shape =
         static_cast<HandShape>(random_number(0, m_hands.size() - 1));
     if (set_active) {

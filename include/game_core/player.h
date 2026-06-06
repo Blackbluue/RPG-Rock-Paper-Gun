@@ -10,7 +10,7 @@ class Player {
     unsigned int m_req_exp{}; // The experience points required to level up
     int m_hp{};               // The player's current HP
     std::map<HandShape, Hand> m_hands{}; // The player's hands mapped by shape
-    HandShape m_active_hand{ROCK}; // The currently active hand for the player
+    HandShape m_active_hand{}; // The currently active hand for the player
   public:
     /**
      * Construct a new Player object with default HP and hand configurations.
@@ -97,16 +97,37 @@ class Player {
      *
      * @return The active hand.
      */
-    Hand getActiveHand();
+    Hand get_active_hand();
 
     /**
      * Set the active hand of the player.
      *
      * @param hand The hand to set as active.
      */
-    void setActiveHand(HandShape hand);
+    void set_active_hand(HandShape hand);
 
-    Hand randomHand(bool set_active = false);
+    /**
+     * Get the player's hands mapped by their shapes.
+     *
+     * Note: Do not add/remove hands from this map, as the player is expected to
+     * always have one of each hand shape. Replacing the Hand objects with new
+     * ones of the correct type is fine, but the keys should not be changed.
+     *
+     * @return A map of hand shapes to their corresponding Hand objects.
+     */
+    std::map<HandShape, Hand> get_hands();
+
+    /**
+     * Get a random hand from the player.
+     *
+     * If set_active is true, the randomly selected hand is also set as the
+     * player's active hand.
+     *
+     * @param set_active Whether to set the randomly selected hand as the
+     * active hand.
+     * @return The randomly selected hand.
+     */
+    Hand random_hand(bool set_active = false);
 
     /**
      * Simulate a fight between two players based on their active hands.

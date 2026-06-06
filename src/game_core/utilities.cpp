@@ -14,5 +14,5 @@ void getPlayerInput(GameState gameState) {
 
 void getEnemyInput(Player player, Player opponent) {
     // TODO: let opponent perform other actions before choosing hand
-    opponent.randomHand(true);
+    opponent.random_hand(true);
 }

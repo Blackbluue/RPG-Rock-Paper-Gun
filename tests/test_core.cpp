@@ -1,5 +1,7 @@
+#include "game_core/hand.h"
 #include "game_core/player.h"
 #include <gtest/gtest.h> // for Google Test framework
+#include <map>
 
 TEST(PlayerTest, test_level) {
     Player player;
@@ -44,6 +46,36 @@ TEST(PlayerTest, test_hp) {
     EXPECT_EQ(player.get_hp(), initial_hp + 5);
     player.adjust_hp(-3);
     EXPECT_EQ(player.get_hp(), initial_hp + 2);
+}
+
+TEST(PlayerTest, test_hands) {
+    Player player;
+
+    player.set_active_hand(ROCK);
+    EXPECT_EQ(player.get_active_hand().getShape(), ROCK);
+
+    player.set_active_hand(PAPER);
+    EXPECT_EQ(player.get_active_hand().getShape(), PAPER);
+
+    player.set_active_hand(SCISSORS);
+    EXPECT_EQ(player.get_active_hand().getShape(), SCISSORS);
+
+    for (int i{10}; i > 0; --i) {
+        player.random_hand();
+        // ensure random_hand function does not change active hand
+        EXPECT_EQ(player.get_active_hand().getShape(), SCISSORS);
+    }
+    for (int i{10}; i > 0; --i) {
+        Hand rand_hand = player.random_hand(true);
+        // ensure random_hand function changes active hand
+        EXPECT_EQ(player.get_active_hand().getShape(), rand_hand.getShape());
+    }
+
+    std::map<HandShape, Hand> hands = player.get_hands();
+    EXPECT_EQ(hands.size(), 3);
+    EXPECT_EQ(hands[ROCK].getShape(), ROCK);
+    EXPECT_EQ(hands[PAPER].getShape(), PAPER);
+    EXPECT_EQ(hands[SCISSORS].getShape(), SCISSORS);
 }
 
 int main(int argc, char **argv) {
