@@ -1,17 +1,25 @@
 #include "game_core/hand.h"
+#include <map>
+#include <string_view>
 
-constexpr auto SCORE_BASE = 1; // Base score for each hand
-constexpr auto SCORE_MOD = 0;  // Default score modifier for each hand
-constexpr auto DEBUFF = 0;     // Default debuff for each hand
 // added to hand score when the hand wins against the opponent's hand.
-constexpr auto ADVANTAGE = 10;
+constexpr auto ADVANTAGE = 3;
+const std::map<HandShape, std::map<std::string_view, int>> DEFAULT_HANDS{
+    {HandShape::ROCK, {{"score_base", 4}, {"score_mod", 1}, {"debuff", 0}}},
+    {HandShape::PAPER, {{"score_base", 0}, {"score_mod", 2}, {"debuff", 4}}},
+    {HandShape::SCISSORS,
+     {{"score_base", 1}, {"score_mod", 3}, {"debuff", 0}}}};
 
 Hand::Hand()
-    : m_score_base(SCORE_BASE), m_score_mod(SCORE_MOD), m_debuff(DEBUFF),
+    : m_score_base(DEFAULT_HANDS.at(HandShape::ROCK).at("score_base")),
+      m_score_mod(DEFAULT_HANDS.at(HandShape::ROCK).at("score_mod")),
+      m_debuff(DEFAULT_HANDS.at(HandShape::ROCK).at("debuff")),
       m_shape(HandShape::ROCK) {}
 Hand::Hand(HandShape shape)
-    : m_score_base(SCORE_BASE), m_score_mod(SCORE_MOD), m_debuff(DEBUFF),
-      m_shape(shape) {}
+    : m_score_base(DEFAULT_HANDS.at(shape).at("score_base")),
+      m_score_mod(DEFAULT_HANDS.at(shape).at("score_mod")),
+      m_debuff(DEFAULT_HANDS.at(shape).at("debuff")), m_shape(shape) {}
+
 int Hand::get_score_base() { return m_score_base; }
 void Hand::set_score_base(int score_base) { m_score_base = score_base; }
 int Hand::get_score_mod() { return m_score_mod; }
