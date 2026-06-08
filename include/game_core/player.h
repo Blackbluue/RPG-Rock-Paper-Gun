@@ -138,4 +138,15 @@ class Player {
      * @param opponent The second player.
      */
     void fightRound(Player opponent);
+
+    /**
+     * Get enemy input to change the active hand.
+     *
+     * This function will simulate enemy input to change their active hand
+     * before a fight round. The implementation can be based on random selection
+     * or a simple AI algorithm.
+     *
+     * @param player The player whose opponent's input is being simulated.
+     */
+    void getEnemyInput(Player player);
 };

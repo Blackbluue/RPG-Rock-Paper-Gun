@@ -74,3 +74,8 @@ void Player::fightRound(Player opponent) {
     }
     // TODO: apply after-round-calculation effects
 }
+
+void Player::getEnemyInput(Player player) {
+    // TODO: let opponent perform other actions before choosing hand
+    random_hand(true);
+}

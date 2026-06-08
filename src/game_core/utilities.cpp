@@ -7,12 +7,3 @@ int random_number(int min, int max) {
     std::uniform_int_distribution<> dis(min, max);
     return dis(gen);
 }
-
-void getPlayerInput(GameState gameState) {
-    // TODO: implement player input handling to change active hand
-}
-
-void getEnemyInput(Player player, Player opponent) {
-    // TODO: let opponent perform other actions before choosing hand
-    opponent.random_hand(true);
-}
