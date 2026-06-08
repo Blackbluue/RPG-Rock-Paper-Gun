@@ -1,9 +1,10 @@
-#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode({200, 200}), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    constexpr auto window_size = sf::Vector2u{800, 600};
+    constexpr auto window_title = "RPG: Rock Paper Gun!";
+
+    sf::Window window(sf::VideoMode(window_size), window_title);
 
     while (window.isOpen()) {
         while (const std::optional event = window.pollEvent()) {
@@ -11,8 +12,6 @@ int main() {
                 window.close();
         }
 
-        window.clear();
-        window.draw(shape);
         window.display();
     }
 }
