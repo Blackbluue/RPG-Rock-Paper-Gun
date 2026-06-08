@@ -6,21 +6,26 @@
 class Session {
   private:
     GameState m_gameState{}; // The game state for the session
-    int match_count{};       // The number of matches played in the session
+    int m_matchs_won{};      // The number of matches won in the session
   public:
     /**
      * Construct a new Session object.
      *
      * Initializes the session and prepares for a new match.
      */
-    Session(GameState gameState);
+    Session(GameState game_state) : m_gameState(game_state) {}
 
     /**
-     * Get the number of matches played in the session.
+     * Get the number of matches won in the session.
      *
      * @return The current match count.
      */
-    int getMatchCount();
+    int get_matchs_won() { return m_matchs_won; }
+
+    /**
+     * Reset the match count to 0.
+     */
+    void reset_matches() { m_matchs_won = 0; }
 
     /**
      * Play a new match in the game.
@@ -32,7 +37,7 @@ class Session {
      * @param opponent The opponent player (e.g., an AI opponent).
      * @return True if the player wins the match, false otherwise.
      */
-    bool playMatch(Player opponent);
+    bool play_match(Player opponent);
 
     /**
      * Grant rewards to the player after winning a match.
@@ -42,7 +47,7 @@ class Session {
      *
      * @param opponent The opponent player that was defeated.
      */
-    void grantReward(Player opponent);
+    void grant_reward(Player opponent);
 
     /**
      * Update the game state with the player's progression after a match.
@@ -50,5 +55,5 @@ class Session {
      * This function will update the save state specific information not tied
      * directly to the player's attributes.
      */
-    void updateGameState();
+    void update_game_state();
 };

@@ -1,5 +1,7 @@
+#include "game_core/game_state.h"
 #include "game_core/hand.h"
 #include "game_core/player.h"
+#include "game_core/session.h"
 #include <gtest/gtest.h> // for Google Test framework
 #include <map>
 
@@ -98,6 +100,31 @@ TEST(PlayerTest, test_hands) {
     EXPECT_EQ(hands[HandShape::ROCK].getShape(), HandShape::ROCK);
     EXPECT_EQ(hands[HandShape::PAPER].getShape(), HandShape::PAPER);
     EXPECT_EQ(hands[HandShape::SCISSORS].getShape(), HandShape::SCISSORS);
+}
+
+TEST(SessionTest, test_session) {
+    constexpr auto MATCH_LIMIT = 100;
+    auto matches_won = 0;
+    GameState gs{true}; // debug mode
+    Session session{gs};
+    Player player = gs.getPlayer();
+    Player opponent{};
+
+    for (int i{0}; i > MATCH_LIMIT; ++i) {
+        EXPECT_EQ(session.get_matchs_won(), matches_won);
+        bool match_won = session.play_match(opponent);
+        if (match_won) {
+            EXPECT_EQ(session.get_matchs_won(), ++matches_won);
+            EXPECT_GT(player.get_hp(), 0);
+            EXPECT_LE(opponent.get_hp(), 0);
+        } else {
+            EXPECT_LE(player.get_hp(), 0);
+            EXPECT_GT(opponent.get_hp(), 0);
+            EXPECT_EQ(session.get_matchs_won(), matches_won);
+        }
+    }
+    session.reset_matches();
+    EXPECT_EQ(session.get_matchs_won(), 0);
 }
 
 int main(int argc, char **argv) {
