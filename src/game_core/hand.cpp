@@ -20,15 +20,6 @@ Hand::Hand(HandShape shape)
       m_score_mod(DEFAULT_HANDS.at(shape).at("score_mod")),
       m_debuff(DEFAULT_HANDS.at(shape).at("debuff")), m_shape(shape) {}
 
-int Hand::get_score_base() { return m_score_base; }
-void Hand::set_score_base(int score_base) { m_score_base = score_base; }
-int Hand::get_score_mod() { return m_score_mod; }
-void Hand::set_score_mod(int score_mod) { m_score_mod = score_mod; }
-int Hand::get_debuff() { return m_debuff; }
-void Hand::set_debuff(int debuff) { m_debuff = debuff; }
-void Hand::setShape(HandShape shape) { m_shape = shape; }
-HandShape Hand::getShape() { return m_shape; }
-
 int Hand::calc_score(Hand opponent) {
     int p1_score = m_score_base + m_score_mod - opponent.m_debuff;
     int p2_score = opponent.m_score_base + opponent.m_score_mod - m_debuff;

@@ -25,7 +25,7 @@ class Player {
      *
      * @return The current level.
      */
-    unsigned short get_Lvl();
+    unsigned short get_Lvl() { return m_lvl; }
 
     /**
      * Increase the player's level by 1.
@@ -50,14 +50,14 @@ class Player {
      *
      * @return The current experience points.
      */
-    unsigned int get_cur_exp();
+    unsigned int get_cur_exp() { return m_cur_exp; }
 
     /**
      * Get the experience points required to level up.
      *
      * @return The required experience points.
      */
-    unsigned int get_req_exp();
+    unsigned int get_req_exp() { return m_req_exp; }
 
     /**
      * Increase the player's experience points.
@@ -76,35 +76,35 @@ class Player {
      *
      * Resetting experience points does not alter the player's level.
      */
-    void reset_exp();
+    void reset_exp() { m_cur_exp = 0; }
 
     /**
      * Get the current HP of the player.
      *
      * @return The current HP.
      */
-    int get_hp();
+    int get_hp() { return m_hp; }
 
     /**
      * Adjust the HP of the player.
      *
      * @param change The amount to adjust the HP by (positive or negative).
      */
-    void adjust_hp(int change);
+    void adjust_hp(int change) { m_hp += change; }
 
     /**
      * Get the currently active hand of the player.
      *
      * @return The active hand.
      */
-    Hand get_active_hand();
+    Hand get_active_hand() { return m_hands[m_active_hand]; }
 
     /**
      * Set the active hand of the player.
      *
      * @param hand The hand to set as active.
      */
-    void set_active_hand(HandShape hand);
+    void set_active_hand(HandShape hand) { m_active_hand = hand; }
 
     /**
      * Get the player's hands mapped by their shapes.
@@ -115,7 +115,7 @@ class Player {
      *
      * @return A map of hand shapes to their corresponding Hand objects.
      */
-    std::map<HandShape, Hand> get_hands();
+    std::map<HandShape, Hand> get_hands() { return m_hands; }
 
     /**
      * Get a random hand from the player.
@@ -137,7 +137,7 @@ class Player {
      *
      * @param opponent The second player.
      */
-    void fightRound(Player opponent);
+    void fight_round(Player opponent);
 
     /**
      * Get enemy input to change the active hand.
@@ -148,5 +148,5 @@ class Player {
      *
      * @param player The player whose opponent's input is being simulated.
      */
-    void getEnemyInput(Player player);
+    void get_enemy_input(Player player);
 };

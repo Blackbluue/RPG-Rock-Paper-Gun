@@ -6,7 +6,7 @@
 #include <map>
 
 void test_hand(Hand to_test, Hand winner, Hand loser, HandShape shape) {
-    EXPECT_EQ(to_test.getShape(), shape);
+    EXPECT_EQ(to_test.get_shape(), shape);
     EXPECT_GT(to_test.calc_score(loser),
               0); // to_test should win against loser
     EXPECT_LT(to_test.calc_score(winner),
@@ -76,30 +76,30 @@ TEST(PlayerTest, test_hands) {
     Player player;
 
     player.set_active_hand(HandShape::ROCK);
-    EXPECT_EQ(player.get_active_hand().getShape(), HandShape::ROCK);
+    EXPECT_EQ(player.get_active_hand().get_shape(), HandShape::ROCK);
 
     player.set_active_hand(HandShape::PAPER);
-    EXPECT_EQ(player.get_active_hand().getShape(), HandShape::PAPER);
+    EXPECT_EQ(player.get_active_hand().get_shape(), HandShape::PAPER);
 
     player.set_active_hand(HandShape::SCISSORS);
-    EXPECT_EQ(player.get_active_hand().getShape(), HandShape::SCISSORS);
+    EXPECT_EQ(player.get_active_hand().get_shape(), HandShape::SCISSORS);
 
     for (int i{10}; i > 0; --i) {
         player.random_hand();
         // ensure random_hand function does not change active hand
-        EXPECT_EQ(player.get_active_hand().getShape(), HandShape::SCISSORS);
+        EXPECT_EQ(player.get_active_hand().get_shape(), HandShape::SCISSORS);
     }
     for (int i{10}; i > 0; --i) {
         Hand rand_hand = player.random_hand(true);
         // ensure random_hand function changes active hand
-        EXPECT_EQ(player.get_active_hand().getShape(), rand_hand.getShape());
+        EXPECT_EQ(player.get_active_hand().get_shape(), rand_hand.get_shape());
     }
 
     std::map<HandShape, Hand> hands = player.get_hands();
     EXPECT_EQ(hands.size(), 3);
-    EXPECT_EQ(hands[HandShape::ROCK].getShape(), HandShape::ROCK);
-    EXPECT_EQ(hands[HandShape::PAPER].getShape(), HandShape::PAPER);
-    EXPECT_EQ(hands[HandShape::SCISSORS].getShape(), HandShape::SCISSORS);
+    EXPECT_EQ(hands[HandShape::ROCK].get_shape(), HandShape::ROCK);
+    EXPECT_EQ(hands[HandShape::PAPER].get_shape(), HandShape::PAPER);
+    EXPECT_EQ(hands[HandShape::SCISSORS].get_shape(), HandShape::SCISSORS);
 }
 
 TEST(SessionTest, test_session) {
@@ -107,7 +107,7 @@ TEST(SessionTest, test_session) {
     auto matches_won = 0;
     GameState gs{true}; // debug mode
     Session session{gs};
-    Player player = gs.getPlayer();
+    Player player = gs.get_player();
     Player opponent{};
 
     for (int i{0}; i > MATCH_LIMIT; ++i) {

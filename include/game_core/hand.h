@@ -36,56 +36,56 @@ class Hand {
      *
      * @return The current base score.
      */
-    int get_score_base();
+    int get_score_base() { return m_score_base; }
 
     /**
      * Set the base score of the hand.
      *
      * @param score_base The new base score to set.
      */
-    void set_score_base(int score_base);
+    void set_score_base(int score_base) { m_score_base = score_base; }
 
     /**
      * Get the score modifier of the hand.
      *
      * @return The current score modifier.
      */
-    int get_score_mod();
+    int get_score_mod() { return m_score_mod; }
 
     /**
      * Set the score modifier of the hand.
      *
      * @param score_mod The new score modifier to set.
      */
-    void set_score_mod(int score_mod);
+    void set_score_mod(int score_mod) { m_score_mod = score_mod; }
 
     /**
      * Get the debuff applied to the opponent when calculating score.
      *
      * @return The current debuff value.
      */
-    int get_debuff();
+    int get_debuff() { return m_debuff; }
 
     /**
      * Set the debuff applied to the opponent when calculating score.
      *
      * @param debuff The new debuff value to set.
      */
-    void set_debuff(int debuff);
+    void set_debuff(int debuff) { m_debuff = debuff; }
 
     /**
      * Get the shape of the hand.
      *
      * @return The current hand shape.
      */
-    HandShape getShape();
+    HandShape get_shape() { return m_shape; }
 
     /**
      * Set the shape of the hand.
      *
      * @param shape The new hand shape to set.
      */
-    void setShape(HandShape shape);
+    void set_shape(HandShape shape) { m_shape = shape; }
 
     /**
      * Calculate the score between this hand and an opponent's hand.

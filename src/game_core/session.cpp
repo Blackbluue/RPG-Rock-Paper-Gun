@@ -2,20 +2,20 @@
 
 bool Session::play_match(Player opponent) {
     auto round = 1;
-    Player player = m_gameState.getPlayer();
+    Player player = m_gameState.get_player();
 
     while (player.get_hp() > 0 && opponent.get_hp() > 0) {
-        if (!m_gameState.isDebug()) {
+        if (!m_gameState.is_debug()) {
             // TODO: get player input
-            opponent.getEnemyInput(player);
+            opponent.get_enemy_input(player);
         } else {
             // randomize all choices in debug mode for testing purposes
             player.random_hand(true);
             opponent.random_hand(true);
         }
-        player.fightRound(opponent);
+        player.fight_round(opponent);
         ++round;
-        if (m_gameState.isDebug() && round == 11) {
+        if (m_gameState.is_debug() && round == 11) {
             // kill player after 10 rounds to stop excessively long matches
             player.adjust_hp(-player.get_hp());
         }
