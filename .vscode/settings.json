@@ -1,0 +1,14 @@
+{
+    "cmake.sourceDirectory": "C:/Users/mille/Documents/GitHub/RPG-Rock-Paper-Gun",
+    "files.exclude": {
+        "**/*.rpyc": true,
+        "**/*.rpa": true,
+        "**/*.rpymc": true,
+        "**/cache/": true
+    },
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "cSpell.words": [
+        "papr",
+        "scis"
+    ]
+}

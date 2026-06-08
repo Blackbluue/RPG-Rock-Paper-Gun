@@ -1,0 +1,71 @@
+rogue-like RPG style progression. continue to play matches until player dies.
+save player progression in game state.
+number of matches played stored and reset per session.
+
+->MAIN
+initialize game state
+while player alive
+	play match
+	collect rewards
+	update game state with rewards and progression
+
+
+->PLAY MATCH
+for each turn
+	draw card
+	play cards
+	pick hand
+	calculate score (applies damage)
+	apply after effects
+	check health, end match if health = 0
+	turn ends
+
+there are 3 hand shapes: rock, paper, scissors.
+hands have 3 stats: base score, score bonus, and debuff.
+matches between hands are determined based on who has the higher score after
+score calculation.
+score calculation is determined by the formula:
+	final_score = (adjusted_Score + bonus) + advantage
+	adjusted_Score = (base - debuff),
+	adv = 3
+the adjusted score cannot be negative, if it is, it is set to 0. advantage is
+determined by the hand shape matchup, and is 3 for the winner and 0 for loser.
+different hand types have preferences for stat distribution. for example,
+rock has higher base score but lower bonus and debuff, while paper has higher
+debuff but lower base score and bonus, and scissors has higher bonus but lower
+base score and debuff.
+rock: base
+paper: debuff
+scissors: bonus
+
+Example:
+rock_base = 4
+rock_bonus = 1
+rock_debuff = 0
+
+papr_base = 0
+papr_bonus = 2
+papr_debuff = 4
+
+scis_base = 1
+scis_bonus = 3
+scis_debuff = 0
+
+
+// rock vs paper
+rock_score = (rock_base - papr_debuff) + rock_bonus + adv = (4 - 4) + 1 + 0 = 0 + 1 + 0 = 1
+papr_score = (papr_base - rock_debuff) + papr_bonus + adv = (0 - 0) + 2 + 3 = 0 + 2 + 3 = 5
+
+// rock vs scissors
+rock_score = (rock_base - scis_debuff) + rock_bonus + adv = (4 - 0) + 1 + 3 = 4 + 1 + 3 = 8
+scis_score = (scis_base - rock_debuff) + scis_bonus + adv = (1 - 0) + 3 + 0 = 1 + 3 + 0 = 4
+
+// paper vs scissors
+papr_score = (papr_base - scis_debuff) + papr_bonus + adv = (0 - 0) + 2 + 0 = 0 + 2 + 0 = 2
+scis_score = (scis_base - papr_debuff) + scis_bonus + adv = (1 - 4) + 3 + 3 = 0 + 3 + 3 = 6
+
+
+if a player wins a round by having a higher score, they deal damage to the opponent.
+by default, the damage dealt is 1, but it can be modified by hand stats and other factors.
+if a draw occurs, no damage is dealt to either side. the match continues until
+one player's health reaches 0.
