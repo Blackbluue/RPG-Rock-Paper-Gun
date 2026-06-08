@@ -1,16 +1,20 @@
 #include "game_core/session.h"
-#include "game_core/utilities.h"
 
 Session::Session(GameState gameState) : m_gameState(gameState) {}
 int Session::getMatchCount() { return match_count; }
 
 bool Session::playMatch(Player opponent) {
-    while (m_gameState.getPlayer().get_hp() > 0 && opponent.get_hp() > 0) {
-        getPlayerInput(m_gameState);
-        getEnemyInput(m_gameState.getPlayer(), opponent);
-        m_gameState.getPlayer().fightRound(opponent);
+    Player player = m_gameState.getPlayer();
+    while (player.get_hp() > 0 && opponent.get_hp() > 0) {
+        if (m_gameState.isDebug()) {
+            player.random_hand(true);
+        } else {
+            // TODO: get player input
+        }
+        opponent.getEnemyInput(player);
+        player.fightRound(opponent);
     }
-    if (m_gameState.getPlayer().get_hp() > 0) {
+    if (player.get_hp() > 0) {
         ++match_count;
         return true; // Player wins
     } else {

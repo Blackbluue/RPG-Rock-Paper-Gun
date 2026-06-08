@@ -2,25 +2,24 @@
 
 #include "game_core/player.h"
 
-enum LaunchType {
-    GUI,   // Launch the game with a graphical user interface
-    TEXT,  // Launch the game with a text-based interface
-    DEBUG, // Launch the game in debug mode with additional logging and features
-};
-
 class GameState {
   private:
-    LaunchType m_launchType{GUI}; // The type of launch for the game
-    Player m_player{};            // The player with their saved attributes
+    bool m_debug{};    // Whether the game is in debug mode
+    Player m_player{}; // The player with their saved attributes
   public:
     /**
      * Construct a new GameState object.
      *
-     * Initializes the game state and prepares for a new match.
-     *
-     * @param launchType The type of launch for the game.
+     * @param debug Whether to launch the game in debug mode.
      */
-    GameState(LaunchType launchType = LaunchType::GUI);
+    GameState(bool debug = false);
+
+    /**
+     * Check if the game is in debug mode.
+     *
+     * @return True if the game is in debug mode, false otherwise.
+     */
+    bool isDebug();
 
     /**
      * Get the player in the game state.

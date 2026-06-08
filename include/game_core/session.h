@@ -6,7 +6,7 @@
 class Session {
   private:
     GameState m_gameState{}; // The game state for the session
-    int match_count{0};      // The number of matches played in the session
+    int match_count{};       // The number of matches played in the session
   public:
     /**
      * Construct a new Session object.
@@ -15,6 +15,11 @@ class Session {
      */
     Session(GameState gameState);
 
+    /**
+     * Get the number of matches played in the session.
+     *
+     * @return The current match count.
+     */
     int getMatchCount();
 
     /**
