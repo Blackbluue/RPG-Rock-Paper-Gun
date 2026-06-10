@@ -1,17 +1,10 @@
-#include <SFML/Window.hpp>
+#include "gui/application.h"
 
 int main() {
-    constexpr auto window_size = sf::Vector2u{800, 600};
-    constexpr auto window_title = "RPG: Rock Paper Gun!";
-
-    sf::Window window(sf::VideoMode(window_size), window_title);
-
-    while (window.isOpen()) {
-        while (const std::optional event = window.pollEvent()) {
-            if (event->is<sf::Event::Closed>())
-                window.close();
-        }
-
-        window.display();
+    try {
+        Application app;
+        app.run();
+    } catch (std::exception &e) {
+        // TODO: handle exceptions gracefully
     }
 }
