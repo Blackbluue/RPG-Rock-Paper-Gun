@@ -1,7 +1,7 @@
-#include "game_core/game_state.h"
-#include "game_core/hand.h"
-#include "game_core/player.h"
-#include "game_core/session.h"
+#include "game_core/game_state.hpp"
+#include "game_core/hand.hpp"
+#include "game_core/player.hpp"
+#include "game_core/session.hpp"
 #include <gtest/gtest.h> // for Google Test framework
 #include <map>
 

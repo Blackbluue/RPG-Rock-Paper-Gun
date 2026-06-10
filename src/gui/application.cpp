@@ -1,4 +1,4 @@
-#include "gui/application.h"
+#include "gui/application.hpp"
 constexpr auto window_size = sf::Vector2u{800, 600};
 constexpr auto window_title = "RPG: Rock Paper Gun!";
 

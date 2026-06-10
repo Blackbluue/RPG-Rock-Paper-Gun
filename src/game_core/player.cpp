@@ -1,5 +1,5 @@
-#include "game_core/player.h"
-#include "game_core/utilities.h"
+#include "game_core/player.hpp"
+#include "game_core/utilities.hpp"
 
 constexpr auto INITIAL_HP = 10;
 constexpr auto INITIAL_LEVEL = 1;

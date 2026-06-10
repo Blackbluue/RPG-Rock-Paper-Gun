@@ -1,4 +1,4 @@
-#include "game_core/utilities.h"
+#include "game_core/utilities.hpp"
 #include <random>
 
 int random_number(int min, int max) {

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "game_core/game_state.h"
-#include "game_core/player.h"
+#include "game_core/game_state.hpp"
+#include "game_core/player.hpp"
 
 class Session {
   private:

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "game_core/player.h"
+#include "game_core/player.hpp"
 
 class GameState {
   private:

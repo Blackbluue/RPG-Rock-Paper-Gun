@@ -1,4 +1,4 @@
-#include "gui/application.h"
+#include "gui/application.hpp"
 
 int main() {
     try {

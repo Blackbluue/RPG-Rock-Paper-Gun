@@ -1,4 +1,4 @@
-#include "game_core/hand.h"
+#include "game_core/hand.hpp"
 #include <map>
 #include <string_view>
 

@@ -1,4 +1,4 @@
-#include "game_core/session.h"
+#include "game_core/session.hpp"
 
 bool Session::play_match(Player opponent) {
     auto round = 1;
