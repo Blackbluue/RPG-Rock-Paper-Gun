@@ -4,9 +4,6 @@
 #include "game_core/player.hpp"
 
 class Session {
-  private:
-    GameState m_gameState{}; // The game state for the session
-    int m_matchs_won{};      // The number of matches won in the session
   public:
     /**
      * Construct a new Session object.
@@ -56,4 +53,8 @@ class Session {
      * directly to the player's attributes.
      */
     void update_game_state();
+
+  private:
+    GameState m_gameState{}; // The game state for the session
+    int m_matchs_won{};      // The number of matches won in the session
 };

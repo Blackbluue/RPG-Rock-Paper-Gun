@@ -4,13 +4,6 @@
 #include <map>
 
 class Player {
-  private:
-    unsigned short m_lvl{};   // The player's current level
-    unsigned int m_cur_exp{}; // The player's current experience points
-    unsigned int m_req_exp{}; // The experience points required to level up
-    int m_hp{};               // The player's current HP
-    std::map<HandShape, Hand> m_hands{}; // The player's hands mapped by shape
-    HandShape m_active_hand{}; // The currently active hand for the player
   public:
     /**
      * Construct a new Player object with default HP and hand configurations.
@@ -149,4 +142,12 @@ class Player {
      * @param player The player whose opponent's input is being simulated.
      */
     void get_enemy_input(Player player);
+
+  private:
+    unsigned short m_lvl{};   // The player's current level
+    unsigned int m_cur_exp{}; // The player's current experience points
+    unsigned int m_req_exp{}; // The experience points required to level up
+    int m_hp{};               // The player's current HP
+    std::map<HandShape, Hand> m_hands{}; // The player's hands mapped by shape
+    HandShape m_active_hand{}; // The currently active hand for the player
 };

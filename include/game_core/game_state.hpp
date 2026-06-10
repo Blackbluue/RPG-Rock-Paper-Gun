@@ -3,9 +3,6 @@
 #include "game_core/player.hpp"
 
 class GameState {
-  private:
-    bool m_debug{};    // Whether the game is in debug mode
-    Player m_player{}; // The player with their saved attributes
   public:
     /**
      * Construct a new GameState object.
@@ -27,4 +24,8 @@ class GameState {
      * @return The player object representing the current player.
      */
     Player get_player() { return m_player; }
+
+  private:
+    bool m_debug{};    // Whether the game is in debug mode
+    Player m_player{}; // The player with their saved attributes
 };
