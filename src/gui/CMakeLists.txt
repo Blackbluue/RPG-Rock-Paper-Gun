@@ -11,6 +11,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics)
 add_library (game_gui
     ${CMAKE_CURRENT_SOURCE_DIR}/application.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/main_menu_context.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/resource_loader.cpp
 )
 target_link_libraries(game_gui PRIVATE SFML::Graphics)
 target_link_libraries(${PROJECT_NAME} PRIVATE game_gui)

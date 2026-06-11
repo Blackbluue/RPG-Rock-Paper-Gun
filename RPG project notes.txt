@@ -1,3 +1,6 @@
+resources for project must be named and organized in a way that allows for easy
+loading and management.
+
 rogue-like RPG style progression. continue to play matches until player dies.
 save player progression in game state.
 number of matches played stored and reset per session.

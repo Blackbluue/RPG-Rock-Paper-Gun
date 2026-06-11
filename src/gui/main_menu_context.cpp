@@ -1,18 +1,15 @@
 #include "gui/main_menu_context.hpp"
+#include "gui/resource_loader.hpp"
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 
-MainMenuContext::MainMenuContext(sf::RenderWindow *window) : Context(window) {
-    std::string background_path = "resources/images/background.jpg";
-    if (!m_bg_texture.loadFromFile(background_path)) {
-        // TODO: handle missing background
-    }
-
-    // TODO: move loading of fonts to another class that handles resources
-    sf::Font font;
-    std::string font_path = "resources/fonts/vampire_wars.ttf";
-
-    if (!font.openFromFile(font_path)) {
+MainMenuContext::MainMenuContext(
+    sf::RenderWindow *window, std::shared_ptr<ResourceLoader> resource_loader)
+    : Context(window, resource_loader) {
+    m_bg_texture = *m_resource_loader->get_texture("background");
+    std::shared_ptr<sf::Font> font =
+        m_resource_loader->get_font("vampire_wars");
+    if (!font) {
         // TODO: handle missing font
     }
 }
