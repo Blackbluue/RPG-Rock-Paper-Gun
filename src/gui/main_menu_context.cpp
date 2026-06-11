@@ -1,8 +1,8 @@
-#include "gui/context.hpp"
+#include "gui/main_menu_context.hpp"
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 
-Context::Context(sf::RenderWindow *window) : m_window(window), m_bg_texture() {
+MainMenuContext::MainMenuContext(sf::RenderWindow *window) : Context(window) {
     std::string background_path = "resources/images/background.jpg";
     if (!m_bg_texture.loadFromFile(background_path)) {
         // TODO: handle missing background
@@ -17,7 +17,7 @@ Context::Context(sf::RenderWindow *window) : m_window(window), m_bg_texture() {
     }
 }
 
-void Context::render() {
+void MainMenuContext::render() {
     m_window->clear();
     sf::Sprite m_background_sprite(m_bg_texture);
     m_window->draw(m_background_sprite);

@@ -1,4 +1,5 @@
 #include "gui/application.hpp"
+#include "gui/main_menu_context.hpp"
 
 // TODO: include adjustable window size
 constexpr auto window_size = sf::Vector2u{1920, 1080};
@@ -7,8 +8,8 @@ constexpr auto window_title = "RPG: Rock Paper Gun!";
 Application::Application()
     : m_window(sf::VideoMode(window_size), window_title), m_contexts(),
       m_current_context(nullptr) {
-    m_contexts.emplace(Screen::MainMenu, Context(&m_window));
-    m_current_context = &m_contexts.at(Screen::MainMenu);
+    m_current_context = std::make_shared<MainMenuContext>(&m_window);
+    m_contexts.emplace(Screen::MainMenu, m_current_context);
 }
 
 void Application::run() {

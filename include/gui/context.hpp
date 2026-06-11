@@ -9,11 +9,23 @@ enum class Screen {
 
 class Context {
   public:
-    Context(sf::RenderWindow *window);
+    /** Constructor for the context.
+     *
+     * The context does not take ownership of the window, so it is the caller's
+     * responsibility to ensure that the window remains valid for the lifetime
+     * of the context.
+     *
+     * @param window A pointer to the RenderWindow.
+     */
+    Context(sf::RenderWindow *window) : m_window(window), m_bg_texture() {}
+    virtual ~Context() = default;
 
-    void render();
+    /** Render the context to the window. */
+    virtual void render() = 0;
 
-  private:
+  protected:
+    /** The window that the context will render to. */
     sf::RenderWindow *m_window;
+    /** The background texture for the context. */
     sf::Texture m_bg_texture;
 };
