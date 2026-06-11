@@ -2,6 +2,19 @@ rogue-like RPG style progression. continue to play matches until player dies.
 save player progression in game state.
 number of matches played stored and reset per session.
 
+game event handling is split between 3 contexts: main menu, game preparation,
+and game run. each context is capable of performing specific tasks, and showing
+specific screens. the main menu allows the player to start a new game, view
+stats, and exit. the game preparation context allows the player to customize
+their loadout, and view their progression. the game run context is where the
+actual matches take place, and where the player can see their current health,
+rewards, and progression.
+
+class context
+	default screen
+	list of screens that can be shown in this context
+	list of functions that can be performed in this context
+
 ->MAIN
 initialize game state
 while player alive

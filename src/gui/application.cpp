@@ -1,15 +1,14 @@
 #include "gui/application.hpp"
-constexpr auto window_size = sf::Vector2u{800, 600};
+
+// TODO: include adjustable window size
+constexpr auto window_size = sf::Vector2u{1920, 1080};
 constexpr auto window_title = "RPG: Rock Paper Gun!";
 
 Application::Application()
-    : m_window(sf::VideoMode(window_size), window_title) {
-    sf::Font font;
-    std::string fontPath = "resources/fonts/vampire_wars.ttf";
-
-    if (fontPath.empty() || !font.openFromFile(fontPath)) {
-        // TODO: handle missing font
-    }
+    : m_window(sf::VideoMode(window_size), window_title), m_contexts(),
+      m_current_context(nullptr) {
+    m_contexts.emplace(Screen::MainMenu, Context(&m_window));
+    m_current_context = &m_contexts.at(Screen::MainMenu);
 }
 
 void Application::run() {
@@ -19,12 +18,6 @@ void Application::run() {
                 m_window.close();
         }
 
-        render();
+        m_current_context->render();
     }
-}
-
-void Application::render() {
-    m_window.clear();
-    m_window.setView(m_window.getDefaultView());
-    m_window.display();
 }
