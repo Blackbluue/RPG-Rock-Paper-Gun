@@ -1,12 +1,12 @@
 #pragma once
 
-#include <SFML/Graphics/Drawable.hpp>
+#include "gui/ui_element.hpp"
+
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Graphics/Texture.hpp>
-#include <SFML/Graphics/Transformable.hpp>
 #include <functional>
 
 struct ButtonTextures {
@@ -15,7 +15,7 @@ struct ButtonTextures {
     const sf::Texture& pressed_texture;
 };
 
-class Button : public sf::Drawable, public sf::Transformable {
+class Button : public UIElement {
   public:
     typedef std::function<void()> Callback;
 
@@ -54,38 +54,27 @@ class Button : public sf::Drawable, public sf::Transformable {
      */
     sf::Sprite& get_sprite() { return m_sprite; }
 
+    /** Buttons are always selectable.
+     *
+     * @return True, since buttons are always selectable.
+     */
+    virtual bool is_selectable() const override { return true; }
     /** Select the button.
      *
      * This changes the button's texture to the selected texture.
      */
-    void select();
+    void         select();
     /** Deselect the button.
      *
      * This changes the button's texture to the normal texture.
      */
-    void deselect();
+    void         deselect();
 
     /** Activate the button.
      *
      * This calls the button's callback function.
      */
-    void activate() const;
-
-    /** Enable the button.
-     *
-     * This allows the button to be activated.
-     */
-    void enable() { m_disabled = false; }
-    /** Disable the button.
-     *
-     * This prevents the button from being activated.
-     */
-    void disable() { m_disabled = true; }
-    /** Check if the button is disabled.
-     *
-     * @return True if the button is disabled, false otherwise.
-     */
-    bool is_disabled() const { return m_disabled; }
+    virtual void activate() override;
 
   private:
     /** Draw the button to the target.
@@ -103,8 +92,4 @@ class Button : public sf::Drawable, public sf::Transformable {
     sf::Text             m_text;
     /** The callback function to call when the button is clicked. */
     const Callback       m_callback;
-    /** Whether the button is currently selected. */
-    bool                 m_selected;
-    /** Whether the button is disabled. */
-    bool                 m_disabled;
 };
