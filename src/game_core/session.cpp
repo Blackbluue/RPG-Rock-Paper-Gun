@@ -1,7 +1,7 @@
 #include "game_core/session.hpp"
 
 bool Session::play_match(Player opponent) {
-    auto round = 1;
+    auto   round  = 1;
     Player player = m_gameState.get_player();
 
     while (player.get_hp() > 0 && opponent.get_hp() > 0) {
@@ -22,9 +22,9 @@ bool Session::play_match(Player opponent) {
     }
     if (player.get_hp() > 0) {
         ++m_matchs_won;
-        return true; // Player wins
+        return true;  // Player wins
     } else {
-        return false; // Opponent wins
+        return false;  // Opponent wins
     }
 }
 

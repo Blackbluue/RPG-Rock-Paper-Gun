@@ -1,6 +1,7 @@
 #pragma once
 
 #include "game_core/hand.hpp"
+
 #include <map>
 
 class Player {
@@ -144,10 +145,16 @@ class Player {
     void get_enemy_input(Player player);
 
   private:
-    unsigned short m_lvl{};   // The player's current level
-    unsigned int m_cur_exp{}; // The player's current experience points
-    unsigned int m_req_exp{}; // The experience points required to level up
-    int m_hp{};               // The player's current HP
-    std::map<HandShape, Hand> m_hands{}; // The player's hands mapped by shape
-    HandShape m_active_hand{}; // The currently active hand for the player
+    /*The player's current level*/
+    unsigned short            m_lvl{};
+    /*The player's current experience points*/
+    unsigned int              m_cur_exp{};
+    /*The experience points required to level up*/
+    unsigned int              m_req_exp{};
+    /*The player's current HP*/
+    int                       m_hp{};
+    /*The player's hands mapped by shape*/
+    std::map<HandShape, Hand> m_hands{};
+    /*The currently active hand for the player*/
+    HandShape                 m_active_hand{};
 };

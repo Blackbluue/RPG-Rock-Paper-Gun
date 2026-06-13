@@ -1,17 +1,22 @@
 #include "game_core/player.hpp"
+
 #include "game_core/utilities.hpp"
 
-constexpr auto INITIAL_HP = 10;
-constexpr auto INITIAL_LEVEL = 1;
-constexpr auto INITIAL_EXP = 0;
+
+constexpr auto INITIAL_HP      = 10;
+constexpr auto INITIAL_LEVEL   = 1;
+constexpr auto INITIAL_EXP     = 0;
 constexpr auto INITIAL_REQ_EXP = 10;
 constexpr auto EXP_GROWTH_RATE = 1.3;
 
 Player::Player()
-    : m_lvl(INITIAL_LEVEL), m_cur_exp(INITIAL_EXP), m_req_exp(INITIAL_REQ_EXP),
-      m_hp(INITIAL_HP), m_active_hand(HandShape::ROCK) {
-    m_hands[HandShape::ROCK] = Hand(HandShape::ROCK);
-    m_hands[HandShape::PAPER] = Hand(HandShape::PAPER);
+    : m_lvl(INITIAL_LEVEL),
+      m_cur_exp(INITIAL_EXP),
+      m_req_exp(INITIAL_REQ_EXP),
+      m_hp(INITIAL_HP),
+      m_active_hand(HandShape::ROCK) {
+    m_hands[HandShape::ROCK]     = Hand(HandShape::ROCK);
+    m_hands[HandShape::PAPER]    = Hand(HandShape::PAPER);
     m_hands[HandShape::SCISSORS] = Hand(HandShape::SCISSORS);
 }
 
@@ -24,7 +29,7 @@ void Player::level_up(bool reset_exp) {
 }
 
 void Player::reset_level() {
-    m_lvl = INITIAL_LEVEL;
+    m_lvl     = INITIAL_LEVEL;
     m_cur_exp = INITIAL_EXP;
     m_req_exp = INITIAL_REQ_EXP;
 }

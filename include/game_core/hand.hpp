@@ -1,9 +1,9 @@
 #pragma once
 
 enum class HandShape {
-    ROCK,    // beat scissors, lose to paper
-    PAPER,   // beat rock, lose to scissors
-    SCISSORS // beat paper, lose to rock
+    ROCK,     // beat scissors, lose to paper
+    PAPER,    // beat rock, lose to scissors
+    SCISSORS  // beat paper, lose to rock
 };
 
 class Hand {
@@ -97,8 +97,12 @@ class Hand {
     int calc_score(Hand opponent);
 
   private:
-    int m_score_base{};  // Base score of the hand
-    int m_score_mod{};   // Score modifier to add to the base score
-    int m_debuff{};      // Debuff applied to the opponent score
-    HandShape m_shape{}; // The shape of the hand (rock, paper, scissors)
+    /*Base score of the hand*/
+    int       m_score_base{};
+    /*Score modifier to add to the base score*/
+    int       m_score_mod{};
+    /*Debuff applied to the opponent score*/
+    int       m_debuff{};
+    /*The shape of the hand (rock, paper, scissors)*/
+    HandShape m_shape{};
 };

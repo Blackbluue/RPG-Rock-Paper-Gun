@@ -14,8 +14,8 @@ class MainMenuContext : public Context {
      * @param window A pointer to the RenderWindow.
      * @param resource_loader A shared pointer to the ResourceLoader.
      */
-    MainMenuContext(sf::RenderWindow *window,
-                    std::shared_ptr<ResourceLoader> resource_loader);
+    MainMenuContext(sf::RenderWindow*   window,
+        std::shared_ptr<ResourceLoader> resource_loader);
 
     /** Render the context to the window. */
     void render() override;

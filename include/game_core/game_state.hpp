@@ -26,6 +26,6 @@ class GameState {
     Player get_player() { return m_player; }
 
   private:
-    bool m_debug{};    // Whether the game is in debug mode
-    Player m_player{}; // The player with their saved attributes
+    bool   m_debug{};   // Whether the game is in debug mode
+    Player m_player{};  // The player with their saved attributes
 };

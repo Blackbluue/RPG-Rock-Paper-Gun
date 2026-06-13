@@ -55,6 +55,8 @@ class Session {
     void update_game_state();
 
   private:
-    GameState m_gameState{}; // The game state for the session
-    int m_matchs_won{};      // The number of matches won in the session
+    /*The game state for the session*/
+    GameState m_gameState{};
+    /*The number of matches won in the session*/
+    int       m_matchs_won{};
 };
