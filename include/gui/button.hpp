@@ -82,7 +82,8 @@ class Button : public UIElement {
      * @param target The render target to draw to.
      * @param states The render states to use for drawing.
      */
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+    virtual void draw(
+        sf::RenderTarget& target, sf::RenderStates states) const override;
 
     /** The textures for the states of the button. */
     const ButtonTextures m_textures;
