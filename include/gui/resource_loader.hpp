@@ -17,9 +17,9 @@ class ResourceLoader final {
      * If the texture is not found, an exception is thrown.
      *
      * @param name The name of the texture.
-     * @return std::shared_ptr<sf::Texture> A shared pointer to the texture.
+     * @return sf::Texture& A reference to the texture.
      */
-    std::shared_ptr<sf::Texture> get_texture(const std::string& name);
+    sf::Texture& get_texture(const std::string& name);
 
     /**
      * @brief Get the font object
@@ -27,9 +27,9 @@ class ResourceLoader final {
      * If the font is not found, an exception is thrown.
      *
      * @param name The name of the font.
-     * @return std::shared_ptr<sf::Font> A shared pointer to the font.
+     * @return sf::Font& A reference to the font.
      */
-    std::shared_ptr<sf::Font> get_font(const std::string& name);
+    sf::Font& get_font(const std::string& name);
 
   private:
     /**
@@ -47,7 +47,7 @@ class ResourceLoader final {
     void load_font(const std::string& name);
 
     /** The loaded textures. */
-    std::map<std::string, std::shared_ptr<sf::Texture>> m_textures;
+    std::map<std::string, sf::Texture> m_textures;
     /** The loaded fonts. */
-    std::map<std::string, std::shared_ptr<sf::Font>>    m_fonts;
+    std::map<std::string, sf::Font>    m_fonts;
 };

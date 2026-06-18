@@ -8,12 +8,13 @@ constexpr auto window_title = "RPG: Rock Paper Gun!";
 
 Application::Application()
     : m_window(sf::VideoMode(window_size), window_title),
+      m_resource_loader(),
       m_contexts(),
-      m_current_context(nullptr),
-      m_resource_loader(std::make_shared<ResourceLoader>()) {
-    m_current_context =
-        std::make_shared<MainMenuContext>(&m_window, m_resource_loader);
-    m_contexts.emplace(Screen::MainMenu, m_current_context);
+      m_current_context(nullptr) {
+    auto main_menu_context =
+        std::make_unique<MainMenuContext>(m_window, m_resource_loader);
+    m_current_context = main_menu_context.get();
+    m_contexts.emplace(Screen::MainMenu, std::move(main_menu_context));
 }
 
 void Application::run() {
