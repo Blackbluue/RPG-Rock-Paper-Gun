@@ -4,7 +4,7 @@
 
 ResourceLoader::ResourceLoader() : m_textures(), m_fonts() {
     // TODO: Use config file to load resources instead of hardcoding them here
-    load_texture("resources/images/background.jpg");
+    load_texture("resources/images/background.png");
     load_font("resources/fonts/vampire_wars.ttf");
 }
 
