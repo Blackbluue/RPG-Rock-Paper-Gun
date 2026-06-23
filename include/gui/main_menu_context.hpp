@@ -2,6 +2,9 @@
 
 #include "gui/context.hpp"
 #include "gui/resource_loader.hpp"
+#include "gui/ui_sprite.hpp"
+
+#include <memory>
 
 class MainMenuContext : public Context {
   public:
@@ -18,4 +21,7 @@ class MainMenuContext : public Context {
 
     /** Render the context to the window. */
     void render() override;
+
+  private:
+    std::shared_ptr<UISprite> m_bg_sprite;
 };

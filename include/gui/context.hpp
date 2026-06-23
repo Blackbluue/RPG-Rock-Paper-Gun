@@ -1,9 +1,9 @@
 #pragma once
 
+#include "gui/frame.hpp"
 #include "gui/resource_loader.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/Graphics/Texture.hpp>
 
 enum class Screen {
     MainMenu,
@@ -23,7 +23,7 @@ class Context {
     Context(sf::RenderWindow& window, ResourceLoader& resource_loader)
         : m_window(window),
           m_resource_loader(resource_loader),
-          m_bg_texture(nullptr) {}
+          m_base_canvas() {}
     virtual ~Context() = default;
 
     /** Render the context to the window. */
@@ -34,6 +34,6 @@ class Context {
     sf::RenderWindow& m_window;
     /** The resource loader for the context. */
     ResourceLoader&   m_resource_loader;
-    /** The background texture for the context. */
-    sf::Texture*      m_bg_texture;
+    /** The base frame for the context. */
+    Frame             m_base_canvas;
 };
