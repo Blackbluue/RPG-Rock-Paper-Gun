@@ -63,12 +63,12 @@ class Button : public UIElement {
      *
      * This changes the button's texture to the selected texture.
      */
-    void         select();
+    virtual void select() override;
     /** Deselect the button.
      *
      * This changes the button's texture to the normal texture.
      */
-    void         deselect();
+    virtual void deselect() override;
 
     /** Activate the button.
      *
