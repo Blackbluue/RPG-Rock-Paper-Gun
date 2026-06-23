@@ -5,6 +5,7 @@
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <memory>
+#include <optional>
 #include <vector>
 
 class Frame : public UIElement {
@@ -34,14 +35,18 @@ class Frame : public UIElement {
     /** Select the previous child UIElement within the frame. */
     void select_previous();
 
-    /** Add a child UIElement to the Frame.
+    /** Add a child UIElement to the Frame at a specific index.
      *
      * When the frame is rendered, it will render all of its children in the
-     * order they were added.
+     * order they were added. The index is optional; if not provided, the child
+     * will be added to the end of the list. If the index is out of bounds, the
+     * child will be added to the end of the list.
      *
      * @param component The UIElement to add.
+     * @param index The index at which to insert the UIElement.
      */
-    void pack(std::shared_ptr<UIElement> component);
+    void pack(const std::shared_ptr<UIElement>& component,
+        std::optional<std::size_t>              index = std::nullopt);
 
   private:
     /** Draw the frame to the target.

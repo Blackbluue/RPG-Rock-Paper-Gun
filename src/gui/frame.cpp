@@ -32,8 +32,10 @@ void Frame::select_previous() {
     }
 }
 
-void Frame::pack(std::shared_ptr<UIElement> component) {
-    m_children.push_back(component);
+void Frame::pack(const std::shared_ptr<UIElement>& component,
+    std::optional<std::size_t>                     index) {
+    auto offset = index.value_or(m_children.size());
+    m_children.insert(m_children.begin() + offset, component);
 }
 
 void Frame::draw(sf::RenderTarget& target, sf::RenderStates states) const {
